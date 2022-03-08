@@ -1,0 +1,167 @@
+/*
+Given a string and a list of elements from periodic table, check if string only contains elements from the table
+
+Eg. Given string NaClHHe should return true given table {H, He, N, Na, Cl, O, Ca,l}  
+And given string H2SO4 should return false given the same table
+
+boolean containsValidElements(String input, List<String> table) {
+}
+
+input - NaC ; table {N, Na, Ac}
+
+He -
+
+NaC
+Na
+
+
+C -> false
+
+aC -> 
+N -> 
+"" true
+
+
+Ac
+
+NaC 
+
+N ->yes
+Na ->yes
+Ac -Yes
+
+NaC
+N, Na, Ac, NaC, 
+
+// Create HHeNNaClOCa check if naclhhe is anagram or not.
+
+
+
+
+
+NaClHHe - true
+
+NACLHHE - true
+
+naclhhe - true
+
+nac
+na
+
+
+
+
+
+1st
+naclhhe 
+nsclhh
+naclh
+nacl
+nac
+na 
+
+
+2nd
+clhhe
+
+
+clhhe 
+clhh
+clh 
+cl
+
+3rd
+
+hhe 
+hh
+h 
+
+4th
+he 
+
+
+""
+
+
+h2so4
+
+hso
+hso
+hs
+h
+
+so
+s
+
+s -> false
+
+true
+
+e 
+he reove
+h remove
+l remove 
+c 
+*/
+
+#include<bits/stdc++.h>
+#include <iostream>
+#include <cmath>
+#include <cstdio>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+// s[0:len(s)-1];
+string removeLastCharacter(string s) {
+    string newStr ="";
+    for (int i=0;i<s.length()-1;i++) {
+        newStr = newStr + s[i];
+    }
+    return newStr;
+}
+string removeElement() {
+    
+}
+bool containsValidElements(vector<string> e,string s) {
+    if (s.length() == 0)
+        return true;
+        while(s.length()) {
+            for(int i=0;i<e.size();i++) {
+                if (e[i]==s) {
+                    return true;
+                }
+            }
+            s = removeLastCharacter(s);            
+        }
+        
+    return false;
+}
+
+string removeNumbers(string s) {
+    string str="";
+    for(int i=0;i<s.length();i++) {
+        if (isalpha(s[i])){
+            str+=s[i];
+        }
+    }
+    return str;
+}
+
+int main() {
+
+vector <string> elements;
+elements.push_back("h");
+elements.push_back("he");
+elements.push_back("cl");
+elements.push_back("na");
+elements.push_back("o");
+elements.push_back("ca");
+string s="h2so4";
+s=removeNumbers(s);
+
+cout<< containsValidElements(elements,s);
+// elements = {"H","He","Na","Cl","O","Ca"};
+}
